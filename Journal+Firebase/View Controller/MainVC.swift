@@ -30,7 +30,7 @@ class MainVC: UIViewController {
         
         var nameTextField: UITextField?
         var statusTextField: UITextField?
-        var objectTextField: UITextField?
+        var objectKeyTextField: UITextField?
 
         
         let myCustomAlert = AlertController.presentAlertControllerWith(alertTitle: "employee", alertMessage: "Enter in the description", dismissActionTitle: "Cancel")
@@ -47,7 +47,7 @@ class MainVC: UIViewController {
         
         myCustomAlert.addTextField { itemKey in
             itemKey.placeholder = "Enter Key, if applicable"
-            objectTextField = itemKey
+            objectKeyTextField = itemKey
         }
         
         // Actions
@@ -55,7 +55,7 @@ class MainVC: UIViewController {
             
             guard let name = nameTextField?.text, !name.isEmpty,
                   let status = statusTextField?.text,
-                  let key = objectTextField?.text
+                  let key = objectKeyTextField?.text
             else {
                 return
             }
