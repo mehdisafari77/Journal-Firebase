@@ -23,7 +23,7 @@ class MainVC: UIViewController {
     }
     
     // Alert Controller
-    func presentAlert() {
+    func presentAlert(updateOrSave option: Int) {
         
         var nameTextField: UITextField?
         var statusTextField: UITextField?
@@ -46,6 +46,18 @@ class MainVC: UIViewController {
             itemKey.placeholder = "Enter Key"
             nameTextField = itemKey
         }
+        
+        // Actions
+        let saveUpdateItemDetails = UIAlertAction(title: "Continue", style: .default) { _ in
+            
+            guard let name = nameTextField?.text, !name.isEmpty,
+                    let status = statusTextField?.text,
+                    let key = objectTextField?.text else { return }
+        }
+        
+        
+        
+        self.present(myCustomAlert, animated: true, completion: nil)
         
     }
 
