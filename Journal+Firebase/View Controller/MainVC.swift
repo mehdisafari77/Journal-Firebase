@@ -21,6 +21,33 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         view.verticalGradient()
     }
+    
+    // Alert Controller
+    func presentAlert() {
+        
+        var nameTextField: UITextField?
+        var statusTextField: UITextField?
+        var objectTextField: UITextField?
+
+        
+        let myCustomAlert = AlertController.presentAlertControllerWith(alertTitle: "Employee", alertMessage: "Enter in the description", dismissActionTitle: "Cancel")
+        
+        myCustomAlert.addTextField { itemName in
+            itemName.placeholder = "Enter Name"
+            nameTextField = itemName
+        }
+        
+        myCustomAlert.addTextField { itemStatus in
+            itemStatus.placeholder = "Enter Status"
+            nameTextField = itemStatus
+        }
+        
+        myCustomAlert.addTextField { itemKey in
+            itemKey.placeholder = "Enter Key"
+            nameTextField = itemKey
+        }
+        
+    }
 
 
     @IBAction func saveButtonTapped(_ sender: Any) {
