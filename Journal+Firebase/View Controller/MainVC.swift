@@ -20,9 +20,12 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.verticalGradient()
+        
+        
     }
     
-    // Alert Controller
+    /// Alert that will either save or update a firebase object
+    /// - Parameter option: SaveOption is equal to 1 and updateOption is equal to 2
     func presentAlert(updateOrSave option: Int) {
         
         var nameTextField: UITextField?
@@ -51,11 +54,18 @@ class MainVC: UIViewController {
         let saveUpdateItemDetails = UIAlertAction(title: "Continue", style: .default) { _ in
             
             guard let name = nameTextField?.text, !name.isEmpty,
-                    let status = statusTextField?.text,
-                    let key = objectTextField?.text else { return }
+                  let status = statusTextField?.text,
+                  let key = objectTextField?.text else { return }
+            
+            if option == self.saveOption {
+                EmployeeController.shared.save(name: name, status: status)
+            }
+            
+            if option == self.updateOption {
+                EmployeeController.shared.update(objectKey: key, newName: name, newStatus: status)
+            }
+        
         }
-        
-        
         
         self.present(myCustomAlert, animated: true, completion: nil)
         
