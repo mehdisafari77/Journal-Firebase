@@ -13,6 +13,9 @@ class MainVC: UIViewController {
     @IBOutlet weak var updateButton: IRButton!
     @IBOutlet weak var fetchAllButton: IRButton!
     @IBOutlet weak var fetchOneButton: IRButton!
+    
+    private var saveOption = 1
+    private var updateOption = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
