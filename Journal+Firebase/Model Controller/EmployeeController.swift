@@ -44,7 +44,7 @@ struct EmployeeController {
 
     //MARK: - read (fetch one)
     func readEmployeeValue() {
-        ref.child("Employee").observeSingleEvent(of: .value) { snapshot in
+        ref.child("employee").observeSingleEvent(of: .value) { snapshot in
             let employeeData = snapshot.value as? [String: Any]
             print(employeeData ?? "No data was able to be read")
         }

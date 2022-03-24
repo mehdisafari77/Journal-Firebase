@@ -33,7 +33,7 @@ class MainVC: UIViewController {
         var objectTextField: UITextField?
 
         
-        let myCustomAlert = AlertController.presentAlertControllerWith(alertTitle: "Employee", alertMessage: "Enter in the description", dismissActionTitle: "Cancel")
+        let myCustomAlert = AlertController.presentAlertControllerWith(alertTitle: "employee", alertMessage: "Enter in the description", dismissActionTitle: "Cancel")
         
         myCustomAlert.addTextField { itemName in
             itemName.placeholder = "Enter Name"
@@ -42,12 +42,12 @@ class MainVC: UIViewController {
         
         myCustomAlert.addTextField { itemStatus in
             itemStatus.placeholder = "Enter Status"
-            nameTextField = itemStatus
+            statusTextField = itemStatus
         }
         
         myCustomAlert.addTextField { itemKey in
             itemKey.placeholder = "Enter Key, if applicable"
-            nameTextField = itemKey
+            objectTextField = itemKey
         }
         
         // Actions
@@ -55,7 +55,10 @@ class MainVC: UIViewController {
             
             guard let name = nameTextField?.text, !name.isEmpty,
                   let status = statusTextField?.text,
-                  let key = objectTextField?.text else { return }
+                  let key = objectTextField?.text
+            else {
+                return
+            }
             
             if option == self.saveOption {
                 EmployeeController.shared.save(name: name, status: status)
@@ -64,12 +67,10 @@ class MainVC: UIViewController {
             if option == self.updateOption {
                 EmployeeController.shared.update(objectKey: key, newName: name, newStatus: status)
             }
-        
         }
         
         myCustomAlert.addAction(saveUpdateItemDetails)
         self.present(myCustomAlert, animated: true, completion: nil)
-        
     }
 
 
@@ -81,7 +82,6 @@ class MainVC: UIViewController {
     @IBAction func updateButtonTapped(_ sender: Any) {
         updateButton.shake()
         presentAlert(updateOrSave: updateOption)
-        
     }
 
     @IBAction func fetchAllButtonTapped(_ sender: Any) {
