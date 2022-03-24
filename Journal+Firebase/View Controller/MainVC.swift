@@ -46,7 +46,7 @@ class MainVC: UIViewController {
         }
         
         myCustomAlert.addTextField { itemKey in
-            itemKey.placeholder = "Enter Key"
+            itemKey.placeholder = "Enter Key, if applicable"
             nameTextField = itemKey
         }
         
@@ -67,6 +67,7 @@ class MainVC: UIViewController {
         
         }
         
+        myCustomAlert.addAction(saveUpdateItemDetails)
         self.present(myCustomAlert, animated: true, completion: nil)
         
     }
@@ -74,10 +75,12 @@ class MainVC: UIViewController {
 
     @IBAction func saveButtonTapped(_ sender: Any) {
         saveButton.shake()
+        presentAlert(updateOrSave: saveOption)
     }
 
     @IBAction func updateButtonTapped(_ sender: Any) {
         updateButton.shake()
+        presentAlert(updateOrSave: updateOption)
         
     }
 
