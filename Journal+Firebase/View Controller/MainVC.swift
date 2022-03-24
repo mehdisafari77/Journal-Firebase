@@ -21,7 +21,7 @@ class MainVC: UIViewController {
 
 
     @IBAction func saveButtonTapped(_ sender: Any) {
-
+        saveButton.shake()
     }
 
     @IBAction func updateButtonTapped(_ sender: Any) {
